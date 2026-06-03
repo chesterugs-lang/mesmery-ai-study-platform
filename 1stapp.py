@@ -12,7 +12,7 @@
 ═══════════════════════════════════════════════════════════════════════════════
 """
 
-import streamlit as s
+import streamlit as st
 import re
 import random
 import math
