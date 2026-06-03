@@ -24,7 +24,7 @@ import html
 # ─── App Config ──────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Mesmery - AI Study Platform | Summarize, Flashcards, Quizzes",
-    page_icon="⚙️",
+    page_icon="📖",
     layout="wide",
     initial_sidebar_state="expanded",
 )
