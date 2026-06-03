@@ -853,8 +853,32 @@ def _is_heading(text: str) -> bool:
         text_lower = text.lower().rstrip(':').strip()
         if text_lower in HEADING_INDICATOR_WORDS:
             return True
+    # ── Lecture note artifacts: titles, special symbols, formatting ──
+    # Lines that are mostly special characters, symbols, or formatting
+    alpha_chars = sum(1 for c in text if c.isalpha())
+    special_chars = sum(1 for c in text if not c.isalnum() and not c.isspace())
+    total_chars = max(len(text), 1)
+    # Lines that are mostly symbols/formatting (borders, decorative lines)
+    if special_chars / total_chars > 0.4 and alpha_chars < 10:
+        return True
+    # LaTeX-like patterns: \frac, \sum, \int, \sqrt
+    if re.search(r'\\(?:frac|sum|int|sqrt|text|begin|end|left|right|alpha|beta|gamma|delta|theta|lambda|sigma|pi|omega|nabla|partial|infty)', text):
+        return True
+    # Dollar-sign math mode: $...$
+    if re.search(r'\$[^$]+\$', text) and alpha_chars < 20:
+        return True
+    # Lines that are just bullet symbols, arrows, or decorative characters
+    stripped = text.strip()
+    bullet_chars = set('•·∙○●◦‣⁃\u2190\u2191\u2192\u2193\u25ba\u25b6\u25c0\u25c0\u2013\u2014-=*#~_\u2026|/\\')
+    if stripped and all(c in bullet_chars for c in stripped):
+        return True
+    # Lines that are just a number or letter label (like "1.", "a)", "(I)", "A.")
+    if re.match(r'^\s*(?:\d+[.)\]]|[a-z][.)\]]|[A-Z][.)\]]|\([ivxlcIVXLC]+\)|\([A-Z]\)|\(\d+\))\s*$', text):
+        return True
+    # Page numbers, footers, headers (e.g., "Page 5 of 10")
+    if re.match(r'^\s*(?:page|p\.?)\s*\d+\s*(?:of\s*\d+)?\s*$', text, re.IGNORECASE):
+        return True
     return False
-
 
 def _parse_document_structure(text: str) -> tuple[list[dict], list[str]]:
     """Parse document structure: extract headings and topic boundaries.
