@@ -2484,7 +2484,7 @@ def main():
 
     # ── Sidebar ──────────────────────────────────────────────────────────
     with st.sidebar:
-        st.markdown('<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><svg width="32" height="32" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="80" height="80" rx="16" fill="#0d0d0d"/><path d="M16 56V24L28 44L40 24L52 44L64 24V56" stroke="#e63946" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="56" x2="64" y2="56" stroke="#f5f5f5" stroke-width="3" stroke-linecap="round"/></svg><span style="font-weight:700;font-size:1.1em;letter-spacing:-0.03em;">MESMERY</span></div>', unsafe_allow_html=True)
+        st.markdown('<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><svg width="32" height="32" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="80" height="80" rx="16" fill="none"/><path d="M16 56V24L28 44L40 24L52 44L64 24V56" stroke="#e63946" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="56" x2="64" y2="56" stroke="#f5f5f5" stroke-width="3" stroke-linecap="round"/></svg><span style="font-weight:700;font-size:1.1em;letter-spacing:-0.03em;">MESMERY</span></div>', unsafe_allow_html=True)
 
 # ── Theme Dropdown ────────────────────────────────────────────
         theme_options = ["Dark", "Light", "Classic"]
@@ -2636,7 +2636,7 @@ def render_home(text: str):
     """Render the home page."""
     st.markdown("""
     <div style="text-align:center; padding: 40px 0 20px;">
-        <div style="text-align:center;margin-bottom:8px"><svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="80" height="80" rx="16" fill="#0d0d0d"/><path d="M16 56V24L28 44L40 24L52 44L64 24V56" stroke="#e63946" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="56" x2="64" y2="56" stroke="#f5f5f5" stroke-width="3" stroke-linecap="round"/></svg></div><div class="hero-title">MESMERY</div>
+        <div style="text-align:center;margin-bottom:8px"><svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="80" height="80" rx="16" fill="none"/><path d="M16 56V24L28 44L40 24L52 44L64 24V56" stroke="#e63946" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="56" x2="64" y2="56" stroke="#f5f5f5" stroke-width="3" stroke-linecap="round"/></svg></div><div class="hero-title">MESMERY</div>
         <div class="hero-sub">AI-Powered Study Platform · Paste · Learn · Master</div>
     </div>
     """, unsafe_allow_html=True)
