@@ -869,7 +869,7 @@ def _is_heading(text: str) -> bool:
         return True
     # Lines that are just bullet symbols, arrows, or decorative characters
     stripped = text.strip()
-    bullet_chars = set('•·∙○●◦‣⁃\u2190\u2191\u2192\u2193\u25ba\u25b6\u25c0\u25c0\u2013\u2014-=*#~_\u2026|/\\')
+    bullet_chars = set('•·∙○●◦‣⁃←↑→↓►▶◀◄–—-=*#~_…|/\\')
     if stripped and all(c in bullet_chars for c in stripped):
         return True
     # Lines that are just a number or letter label (like "1.", "a)", "(I)", "A.")
@@ -878,6 +878,7 @@ def _is_heading(text: str) -> bool:
     # Page numbers, footers, headers (e.g., "Page 5 of 10")
     if re.match(r'^\s*(?:page|p\.?)\s*\d+\s*(?:of\s*\d+)?\s*$', text, re.IGNORECASE):
         return True
+    return False
     return False
 
 def _parse_document_structure(text: str) -> tuple[list[dict], list[str]]:
